@@ -41,7 +41,7 @@ export default class Gen_opportunitychart extends LightningElement {
                 },
                 options: {},
             };
-            console.log('data => ', data);
+            //console.log('data => ', data);
             this.error = undefined;
         }
     }

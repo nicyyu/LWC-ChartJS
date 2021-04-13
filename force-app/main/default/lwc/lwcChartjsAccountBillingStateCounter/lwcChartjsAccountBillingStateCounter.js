@@ -1,4 +1,4 @@
-import { LightningElement, api, wire } from 'lwc';
+import { LightningElement, api, wire, track } from 'lwc';
 import { loadScript, loadStyle } from 'lightning/platformResourceLoader';
 import chartjs from '@salesforce/resourceUrl/ChartJs';
 import getCounts from '@salesforce/apex/AggregatedStateAccountCounts.getCounts';
@@ -7,29 +7,32 @@ const generateRandomNumber = () => {
   return Math.round(Math.random() * 100);
 };
 
+const dynamicColors = () => {
+    var r = Math.floor(Math.random() * 255);
+    var g = Math.floor(Math.random() * 255);
+    var b = Math.floor(Math.random() * 255);
+    return "rgb(" + r + "," + g + "," + b + ")";
+ };
+
 export default class LwcChartjs extends LightningElement {
     error;
     chart;
     chartjsInitialized = false;
-    data;
+    @track records;
+    chartCountsData;
+    chartLabel;
+    chartColor;
     config = {
         type: 'doughnut',
         data: {
             datasets: [
                 {
-                    data: [
-                    ],
-                    backgroundColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(255, 159, 64)',
-                        'rgb(255, 205, 86)',
-                        'rgb(75, 192, 192)',
-                        'rgb(54, 162, 235)'
-                    ],
+                    data: [],
+                    backgroundColor: [],
                     label: 'Dataset 1'
                 }
             ],
-            labels: ['Red', 'Orange', 'Yellow', 'stateCounts', 'Blue']
+            labels: []
         },
         options: {
             responsive: true,
@@ -49,25 +52,45 @@ export default class LwcChartjs extends LightningElement {
             this.error = error;
             this.config = undefined;
         } else if (data){
-            console.log('data => ', data);
-            this.data = data;
+            console.log('getCounts data => ', data);
+            this.records = data;
+            let chartCountsData = [];
+            let chartLabel = [];
+            let chartColor = [];
+            let color;
+            data.forEach(acc => {
+                chartCountsData.push(acc.expr0);
+                if(acc.BillingState == undefined){
+                    chartLabel.push("undefined");
+                }
+                if(acc.BillingState != undefined){
+                    chartLabel.push(acc.BillingState);
+                }
+                color = dynamicColors();
+                chartColor.push(color);
+            });
+            this.chartCountsData = chartCountsData;
+            this.chartLabel = chartLabel;
+            this.chartColor = chartColor;
+            this.config.data.datasets[0].data = this.chartCountsData;
+            this.config.data.datasets[0].backgroundColor = this.chartColor;
+            this.config.data.labels = this.chartLabel;
         }
     }
 
     renderedCallback() {
+        /* make renderedCallback only run 1 time.
         if (this.chartjsInitialized) {
             return;
         }
         this.chartjsInitialized = true;
-
+        */
         Promise.all([
             loadScript(this, chartjs + '/Chart.min.js'),
             loadStyle(this, chartjs + '/Chart.min.css')
         ]).then(() => {
-                this.config.data.datasets[0].data = [20,20,20,30,50];
                 // disable Chart.js CSS injection
                 window.Chart.platform.disableCSSInjection = true;
-
                 const canvas = document.createElement('canvas');
                 this.template.querySelector('div.chart').appendChild(canvas);
                 const ctx = canvas.getContext('2d');

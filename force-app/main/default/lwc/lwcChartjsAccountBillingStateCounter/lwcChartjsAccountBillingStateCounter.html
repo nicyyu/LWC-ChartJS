@@ -1,6 +1,8 @@
 <template>
   <lightning-card title="LWC ChartJS Account BillingState">
-    <div class="chart" lwc:dom="manual"></div>
+    <template if:true={records}>
+      <div class="chart" lwc:dom="manual"></div>
+    </template>
     <c-view-source source="lwc/libsChartjs" slot="footer">
       Use Chart.js in a Lightning Web component.
     </c-view-source>
