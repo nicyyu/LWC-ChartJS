@@ -1,0 +1,10 @@
+<template>
+  <lightning-card title="Open Opportunities" icon-name="utility:chart">
+    
+    <template if:true={chartConfiguration}>
+        <c-gen_barchart chart-config={chartConfiguration}></c-gen_barchart>
+    </template>
+    
+    <!--<div class="barChart" lwc:dom="manual"></div>-->
+</lightning-card>
+</template>
