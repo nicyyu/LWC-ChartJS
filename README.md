@@ -1,14 +1,23 @@
-# Salesforce DX Project: Next Steps
+# Salesforce DX Project:
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+The purpose of this lwc project was to show lwc component using Chart.js and practice how to use it.
+Chart.js is a chart library that is available as a client-side JavaScript package.
+https://www.chartjs.org
 
-## How Do You Plan to Deploy Your Changes?
+## Any standard components?
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+There are two lwc components from Repo trailheadapps/lwc-recipes
+1. errorPanel
+2. viewSource
 
-## Configure Your Salesforce DX Project
+Please refer the link: https://github.com/trailheadapps/lwc-recipes
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+## Any 3rd party components?
+
+I quoted the lwc components "gen_barchart" and "gen_opportunitychart" from another github repo for learning purpose.
+I modified a little while studying the lwc lifecycle.
+
+Please refer the link: https://github.com/arohitu/ChartJSLWC
 
 ## Read All About It
 
