@@ -4,6 +4,8 @@ The purpose of this lwc project was to show lwc component using Chart.js and pra
 Chart.js is a chart library that is available as a client-side JavaScript package.
 https://www.chartjs.org
 
+![LWC output](/images/Xnip2021-04-13_17-32-24.png?raw=true "LWC output")
+
 ## Any standard components?
 
 There are two lwc components from Repo trailheadapps/lwc-recipes
