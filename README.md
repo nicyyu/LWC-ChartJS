@@ -1,4 +1,4 @@
-# Salesforce DX Project:
+# Salesforce DX Project - LWC-ChartJS:
 
 The purpose of this lwc project was to show lwc component using Chart.js and practice how to use it.
 Chart.js is a chart library that is available as a client-side JavaScript package.
@@ -25,4 +25,3 @@ Please refer the link: https://github.com/arohitu/ChartJSLWC
 - [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
 - [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
 - [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
-# LWC-ChartJS
